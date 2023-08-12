@@ -23,6 +23,6 @@ class ExportUsers implements FromCollection,WithHeadings
     }
      public function headings(): array
     {
-        return ["ID", "Orderid","Name",'Phone','Netamount','Order Date','Status','Product','Quantity'];
+        return ["ID", "Orderid","Name",'Phone','Netamount','Order Date','Status'];
     }
 }
