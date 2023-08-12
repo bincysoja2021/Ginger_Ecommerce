@@ -56,3 +56,14 @@ Route::post('/product_store', [App\Http\Controllers\ProductController::class, 's
 Route::get('/product_edit/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->middleware('permission:edit_product')->name('product_edit');
 Route::get('/product_update/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('product_update');
 Route::delete('/product_destroy/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('product_destroy');
+
+//order
+
+Route::get('/list_order', [App\Http\Controllers\AdminOrderController::class, 'index'])->middleware('permission:list_order')->name('list_order');
+Route::get('/order_edit/{id}', [App\Http\Controllers\AdminOrderController::class, 'edit'])->middleware('permission:edit_order')->name('order_edit');
+Route::get('/order_invoice/{id}', [App\Http\Controllers\AdminOrderController::class, 'invoice'])->middleware('permission:invoice_order')->name('order_invoice');
+Route::get('/order_update/{id}', [App\Http\Controllers\AdminOrderController::class, 'update'])->name('order_update');
+Route::delete('/order_destroy/{id}', [App\Http\Controllers\AdminOrderController::class, 'destroy'])->middleware('permission:delete_order')->name('order_destroy');
+Route::get('/export/{id}', [App\Http\Controllers\AdminOrderController::class, 'exportCSVFile'])->name('export');
+
+Route::post('/change_status', [App\Http\Controllers\AdminOrderController::class, 'change_status'])->name('change_status');

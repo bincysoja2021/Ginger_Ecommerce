@@ -66,6 +66,23 @@ class PermissionSeeder extends Seeder
             'title'=>"Edit Product",
             'slug'=>"edit_product"
         ]);
+        DB::table('permission')->insert([
+            'title'=>"List Order",
+            'slug'=>"list_order"
+        ]);
+
+        DB::table('permission')->insert([
+            'title'=>"Edit Order",
+            'slug'=>"edit_order"
+        ]);
+        DB::table('permission')->insert([
+            'title'=>"Invoice Order",
+            'slug'=>"invoice_order"
+        ]);
+        DB::table('permission')->insert([
+            'title'=>"Delete Order",
+            'slug'=>"delete_order"
+        ]);
         
     }
 }

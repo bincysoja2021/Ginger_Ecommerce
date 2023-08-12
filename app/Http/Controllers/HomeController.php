@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\OrderProducts;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $total=OrderProducts::sum('total_amount');
+        $order_product=OrderProducts::with('order','products')->paginate(5);
+        return view('home',compact('total','order_product'));
     }
 }

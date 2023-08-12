@@ -17,12 +17,16 @@ class ProductSeeder extends Seeder
         DB::table('product')->insert([
             'name'         => "Soni TV ",
             'cat_id'       => '1',
-            'price'        => '5200'
+            'price'        => '5200',
+            'status'       => "Active",
+            'qty'          => '6'
         ]);
          DB::table('product')->insert([
             'name'         => "Oneplas Buds",
             'cat_id'       => '2',
-            'price'        => '5000'
+            'price'        => '5000',
+            'status'       => "Active",
+            'qty'          => '6'
         ]);
     }
 }

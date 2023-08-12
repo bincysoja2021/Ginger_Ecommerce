@@ -54,6 +54,7 @@ class ProductController extends Controller
         $product->price=$request->price;
         $product->image=$filename;
         $product->qty = $request->qty;
+        $product->status="Active";
         $product->save();
 
         return redirect()->route('list_product')->with('success','Product has been created successfully.');
@@ -88,7 +89,7 @@ class ProductController extends Controller
           $filename=$data->image;
         }
         
-        $category=Product::where('id',$req->id)->update(['name'=>$req->name,'cat_id'=>$req->cat_id,'price'=>$req->price,'image'=>$filename,'qty'=>$req->qty]);
+        $category=Product::where('id',$req->id)->update(['name'=>$req->name,'cat_id'=>$req->cat_id,'price'=>$req->price,'status'=>"Active",'image'=>$filename,'qty'=>$req->qty]);
 
         return redirect()->route('list_product')->with('success','Product Has Been updated successfully');
     }
@@ -96,7 +97,17 @@ class ProductController extends Controller
         
      public function destroy($id)
     {
+        $checkexists=OrderProducts::where('product',$id)->exists();
+        if($checkexists==true)
+        {
+          return redirect()->route('list_product')->with('success','Cannot delete Product!.');
+        }
+        else
+        {
           Product::find($id)->delete();
           return redirect()->route('list_product')->with('success','Product has been deleted successfully');
+        } 
     }
+
+   
 }

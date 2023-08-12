@@ -37,6 +37,7 @@
                     <th>Category</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -49,6 +50,7 @@
                         <td>{{$products->cat_deatils['name']}}</td>
                         <td>{{ $products->price }}</td>
                         <td>{{ $products->qty }}</td>
+                        <td>{{ $products->status }}</td>
                         <td>
                             <form action="{{ route('product_destroy',$products->id) }}" method="Post">
                                 <a class="btn btn-primary" href="{{ route('product_edit',$products->id) }}">Edit</a>

@@ -12,7 +12,7 @@ class Product extends Model
     use SoftDeletes;
 
     protected $table="product";
-    protected $fillable = ['id','name','image','cat_id','price','qty'];
+    protected $fillable = ['id','name','image','cat_id','price','qty','status'];
 
     
     public function cat_deatils()

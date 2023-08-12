@@ -7,6 +7,7 @@
       <meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">  
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">        
   <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
 <style>  
 body {  
     position: relative;  
@@ -367,7 +368,8 @@ a[href*="#followme"]::before {
        <li><a href="{{url('/list_role')}}">Role Management</a></li>
        <li><a href="{{url('/list_category')}}">Category</a></li>  
        <li><a href="{{url('/list_product')}}">Product Management</a></li>
-        
+       <li><a href="{{url('/list_order')}}">Order Management</a></li>
+   
      
       </ul>  
   </nav>  
@@ -385,6 +387,54 @@ a[href*="#followme"]::before {
                      </div>  
                 </div>  
             </div>  
+            <div class="container">  
+                <div class="row">  
+                    <div class="col-lg-8 col-lg-offset-2">  
+                        <div class="card" style="width: 70rem;">
+                        <div class="card-body">
+                        <h5 class="card-title" style="text-align:center;">Total Amount : {{$total}}.00</h5>
+                        </div>
+                        </div> 
+                     </div>  
+                </div>  
+            </div>  
+
+            <div class="container mt-2">
+                <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Order ID</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Total Amount</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Order Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($order_product as $key=>$orders)
+                    <tr>
+                        <td>{{ $key + 1 }}</td>
+                        <td>{{ $orders->order['order_id'] }}</td>
+                        <td>{{ $orders->products['name'] }}</td>
+                        <td>{{ $orders->qty }}</td>
+                        <td>{{ $orders->total_amount }}</td>
+                        <td>{{ $orders->order['cust_name'] }}</td>
+                        <td>{{ $orders->order['phone'] }}</td>
+                        <td>{{ $orders->order['order_date'] }}</td>
+                        <td>{{ $orders->order['status'] }}</td>
+                        
+                    </tr>
+                    @endforeach
+            </tbody>
+        </table>
+        {!! $order_product->links() !!}
+            </div>
+
+            
         </div>    
     </div>  
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"> </script>  

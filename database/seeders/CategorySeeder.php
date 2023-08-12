@@ -23,5 +23,14 @@ class CategorySeeder extends Seeder
         DB::table('category')->insert([
             'name'         => "Phone"
         ]);
+        DB::table('category')->insert([
+            'name'         => "Dress"
+        ]);
+        DB::table('category')->insert([
+            'name'         => "Furniture"
+        ]);
+        DB::table('category')->insert([
+            'name'         => "Vehicle"
+        ]);
     }
 }
